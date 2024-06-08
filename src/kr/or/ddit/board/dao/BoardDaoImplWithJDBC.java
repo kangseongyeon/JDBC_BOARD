@@ -13,10 +13,21 @@ import kr.or.ddit.board.vo.BoardVO;
 import kr.or.ddit.util.JDBCUtil3;
 
 public class BoardDaoImplWithJDBC implements IBoardDao {
+	
+	private static IBoardDao boardDao = new BoardDaoImplWithJDBC();
+	
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	private BoardDaoImplWithJDBC() {
+		
+	}
+	
+	public static IBoardDao getInstance() {
+		return boardDao;
+	}
 	
 	@Override
 	public int insertBoard(BoardVO bv) {

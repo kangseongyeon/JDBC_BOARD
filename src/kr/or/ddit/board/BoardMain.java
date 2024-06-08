@@ -40,7 +40,7 @@ public class BoardMain {
 	private IBoardService boardService;
 
 	public BoardMain() {
-		boardService = new BoardServiceImpl();
+		boardService = BoardServiceImpl.getInstance();
 		scan = new Scanner(System.in);
 	}
 

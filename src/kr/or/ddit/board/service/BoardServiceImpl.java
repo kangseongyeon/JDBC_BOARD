@@ -7,12 +7,17 @@ import kr.or.ddit.board.dao.BoardDaoImplWithJDBC;
 import kr.or.ddit.board.vo.BoardVO;
 
 public class BoardServiceImpl implements IBoardService {
+	private static IBoardService boardService = new BoardServiceImpl();
+	
 	private IBoardDao boardDao;
 	
-	public BoardServiceImpl() {
-		boardDao = new BoardDaoImplWithJDBC();
+	private BoardServiceImpl() {
+		boardDao = BoardDaoImplWithJDBC.getInstance();
 	}
 	
+	public static IBoardService getInstance() {
+		return boardService;
+	}
 	
 	@Override
 	public int registerBoard(BoardVO bv) {
